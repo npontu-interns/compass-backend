@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const indexRouter = require('./routes/index');
+const connectDB = require('./db/connection');
 
 // Middleware
 app.use(express.json());
@@ -15,9 +16,13 @@ app.use((err, req, res, next) => {
   res.status(500).type('text/plain').send('Something broke!');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Connect to MongoDB before starting server
+connectDB().then(() => {
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
+  });
+}).catch(err => {
+  console.error('Failed to connect to DB:', err);
 });
 
 module.exports = app;
