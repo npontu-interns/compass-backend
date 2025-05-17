@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URI = 'mongodb+srv://rentalwebsite:vHfMBR5vYGLnAwAY@cluster0.uhawuvb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const URI = process.env.MONGO_URI;
 
 // The files does not seem to read .env properties. Stored the URI in a constant above as an alternative.
 
