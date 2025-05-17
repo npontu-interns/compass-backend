@@ -25,6 +25,10 @@ const HouseSchema = new mongoose.Schema({
     type: String,
     maxlength: [500, 'Description cannot exceed 500 characters']
   },
+  title: {
+    type: String,
+    maxlength: [50, 'Title cannot exceed 50 characters']
+  },
   images: {
     type: [String],  // Array of image URLs
     validate: [arrayLimit, 'Maximum 10 images allowed'],
