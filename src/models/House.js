@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import mongoose from 'mongoose';
+=======
+const mongoose = require('mongoose');
+>>>>>>> 83794d350c442575157c847adb1393137b6596fe
 
 const HouseSchema = new mongoose.Schema({
   location: {
@@ -37,4 +41,8 @@ function arrayLimit(val) {
   return val.length <= 10;
 }
 
+<<<<<<< HEAD
 export default mongoose.model('House', HouseSchema);
+=======
+module.exports = mongoose.model('House', HouseSchema);
+>>>>>>> 83794d350c442575157c847adb1393137b6596fe

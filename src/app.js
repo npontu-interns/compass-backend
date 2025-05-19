@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
@@ -59,7 +60,7 @@ app.use((err, req, res, next) => {
 // 4. Database & Server Startup
 connectDB()
   .then(() => {
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 3001;
     const server = app.listen(port, () => {
       console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${port}`);
     });
@@ -76,3 +77,33 @@ connectDB()
   });
 
 export default app;
+=======
+const express = require('express');
+const app = express();
+const indexRouter = require('./routes/index');
+const connectDB = require('./db/connection');
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Routes
+app.use('/', indexRouter);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).type('text/plain').send('Something broke!');
+});
+
+// Connect to MongoDB before starting server
+connectDB().then(() => {
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
+  });
+}).catch(err => {
+  console.error('Failed to connect to DB:', err);
+});
+
+module.exports = app;
+>>>>>>> 83794d350c442575157c847adb1393137b6596fe

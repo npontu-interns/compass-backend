@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import mongoose from 'mongoose';
 
+=======
+const mongoose = require('mongoose');
+>>>>>>> 83794d350c442575157c847adb1393137b6596fe
 
 const EnquirySchema = new mongoose.Schema({
   house_id: {
@@ -40,4 +44,8 @@ const EnquirySchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
+<<<<<<< HEAD
 export default mongoose.model('Enquiry', EnquirySchema);
+=======
+module.exports = mongoose.model('Enquiry', EnquirySchema);
+>>>>>>> 83794d350c442575157c847adb1393137b6596fe
